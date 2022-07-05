@@ -1,0 +1,13 @@
+/home/ryan/bevy_snake/target/debug/deps/arrayvec-ed3a8ffa4af687b8.rmeta: /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/lib.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec_impl.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/array_string.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/char.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/errors.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/utils.rs
+
+/home/ryan/bevy_snake/target/debug/deps/libarrayvec-ed3a8ffa4af687b8.rlib: /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/lib.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec_impl.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/array_string.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/char.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/errors.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/utils.rs
+
+/home/ryan/bevy_snake/target/debug/deps/arrayvec-ed3a8ffa4af687b8.d: /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/lib.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec_impl.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/array_string.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/char.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/errors.rs /home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/utils.rs
+
+/home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/lib.rs:
+/home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec_impl.rs:
+/home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/arrayvec.rs:
+/home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/array_string.rs:
+/home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/char.rs:
+/home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/errors.rs:
+/home/ryan/.cargo/registry/src/github.com-1ecc6299db9ec823/arrayvec-0.7.2/src/utils.rs:

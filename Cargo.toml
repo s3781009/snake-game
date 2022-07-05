@@ -1,0 +1,20 @@
+[package]
+name = "bevy_snake"
+version = "0.6.0"
+edition = "2021"
+
+[dependencies]
+bevy = {version="0.7.0", features=[
+    "dynamic",
+    "bevy_gilrs",
+    "bevy_winit",
+    "render",
+    "png",
+    "hdr",
+    "vorbis",
+    "x11",
+    "filesystem_watcher"]}
+rand = "0.7.3"
+bevy_kira_audio = {version = "0.10.0", features =[
+    "mp3"
+]}
