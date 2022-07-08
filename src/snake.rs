@@ -1,7 +1,8 @@
-use super::{food, game};
+use super::{food, game, game::GameState};
+use bevy::core::FixedTimestep;
 use bevy::prelude::*;
 
-use bevy::core::FixedTimestep;
+use bevy::ecs::schedule::ShouldRun;
 
 pub const SNAKE_HEAD_COLOR: Color = Color::rgb(0.7, 0.7, 0.7);
 pub const SNAKE_SEGMENT_COLOR: Color = Color::rgb(0.3, 0.3, 0.3);
@@ -14,18 +15,30 @@ pub struct SnakeHead {
 pub struct SnakePlugin;
 impl Plugin for SnakePlugin {
     fn build(&self, app: &mut App) {
-        app.add_startup_system(spawn_snake)
+        app.add_system_set(SystemSet::on_enter(GameState::Game).with_system(spawn_snake))
             .insert_resource(SnakeSegments::default())
             .insert_resource(LastTailPosition::default())
             .add_event::<GrowthEvent>()
-            .add_system(snake_movement_input.before(snake_movement))
             .add_event::<game::GameOverEvent>()
             .add_system_set(
+                // work around for timestep not respecting the current state, only spawn food when in game state
                 SystemSet::new()
-                    .with_run_criteria(FixedTimestep::step(0.150))
+                    .with_run_criteria(FixedTimestep::step(0.15).chain(
+                        |In(input): In<ShouldRun>, state: Res<State<GameState>>| {
+                            if state.current() == &GameState::Game {
+                                input
+                            } else {
+                                ShouldRun::No
+                            }
+                        },
+                    ))
                     .with_system(snake_movement)
                     .with_system(snake_eating.after(snake_movement))
                     .with_system(snake_growth.after(snake_eating)),
+            )
+            .add_system_set(
+                SystemSet::on_update(GameState::Game)
+                    .with_system(snake_movement_input.before(snake_movement)),
             );
     }
 }

@@ -4,12 +4,14 @@ use crate::game::GameState;
 
 pub struct MenuPlugin;
 
+#[derive(Component)]
+pub struct EnterGameButton;
+
 impl Plugin for MenuPlugin {
     fn build(&self, app: &mut App) {
         app.add_system_set(SystemSet::on_enter(GameState::Menu).with_system(setup_menu))
-            .add_system_set(SystemSet::on_update(GameState::Menu).with_system(handle_start_button));
-        // add_startup_system(setup_menu)
-        // .add_system(hanSysteGameState);
+            .add_system_set(SystemSet::on_update(GameState::Menu).with_system(handle_start_button))
+            .add_system_set(SystemSet::on_exit(GameState::Menu).with_system(despawn_menu));
     }
 }
 
@@ -49,21 +51,24 @@ fn setup_menu(mut commands: Commands, asset_server: Res<AssetServer>) {
                 ),
                 ..default()
             });
-        });
+        })
+        .insert(EnterGameButton);
 }
 fn handle_start_button(
-    mut commands: Commands,
-    mut interaction_query: Query<(&Children, &Interaction), Changed<Interaction>>,
+    interaction_query: Query<(&Children, &Interaction), Changed<Interaction>>,
     mut state: ResMut<State<GameState>>,
 ) {
-    for (children, interaction) in interaction_query.iter() {
-        let child = children.iter().next().unwrap();
+    for (_, interaction) in interaction_query.iter() {
         match interaction {
             Interaction::Clicked => {
-                state.set(GameState::Game);
-                println!("clicked");
+                state.set(GameState::Game).expect("cannot change state");
             }
             _ => (),
         }
+    }
+}
+fn despawn_menu(mut commands: Commands, query: Query<Entity, With<EnterGameButton>>) {
+    for ent in query.iter() {
+        commands.entity(ent).despawn_recursive();
     }
 }
