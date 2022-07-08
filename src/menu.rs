@@ -6,7 +6,10 @@ pub struct MenuPlugin;
 
 impl Plugin for MenuPlugin {
     fn build(&self, app: &mut App) {
-        app.add_startup_system(setup_menu);
+        app.add_system_set(SystemSet::on_enter(GameState::Menu).with_system(setup_menu))
+            .add_system_set(SystemSet::on_update(GameState::Menu).with_system(handle_start_button));
+        // add_startup_system(setup_menu)
+        // .add_system(hanSysteGameState);
     }
 }
 
@@ -58,6 +61,7 @@ fn handle_start_button(
         match interaction {
             Interaction::Clicked => {
                 state.set(GameState::Game);
+                println!("clicked");
             }
             _ => (),
         }

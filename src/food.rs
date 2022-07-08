@@ -1,5 +1,8 @@
+use crate::game::GameState;
+
 use super::{game, snake};
 use bevy::core::FixedTimestep;
+use bevy::ecs::schedule::ShouldRun;
 use bevy::prelude::*;
 use rand::prelude::random;
 
@@ -10,8 +13,17 @@ pub struct FoodPlugin;
 impl Plugin for FoodPlugin {
     fn build(&self, app: &mut App) {
         app.add_system_set(
+            // work around for timestep not respecting the current state, only spawn food when in game state
             SystemSet::new()
-                .with_run_criteria(FixedTimestep::step(1.0))
+                .with_run_criteria(FixedTimestep::step(1.0).chain(
+                    |In(input): In<ShouldRun>, state: Res<State<GameState>>| {
+                        if state.current() == &GameState::Game {
+                            input
+                        } else {
+                            ShouldRun::No
+                        }
+                    },
+                ))
                 .with_system(food_spawner),
         );
     }

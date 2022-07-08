@@ -11,6 +11,21 @@ pub enum GameState {
     Menu,
     Game,
 }
+pub struct GamePlugin;
+
+impl Plugin for GamePlugin {
+    fn build(&self, app: &mut App) {
+        app.add_startup_system(setup_camera)
+            .add_system_set(
+                SystemSet::on_update(GameState::Game)
+                    .with_system(game_over.after(snake::snake_movement))
+                    .with_system(update_score)
+                    .with_system(spawn_score),
+            )
+            .add_system(position_translation)
+            .add_system(size_scaling);
+    }
+}
 
 pub fn spawn_score(
     mut commands: Commands,
